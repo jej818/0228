@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_margin="15dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/logo"/>
+
+        <EditText
+            android:id="@+id/editMainActivityName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:hint="이름"
+            android:layout_below="@id/imageLogo"/>
+
+        <EditText
+            android:id="@+id/editMainActivityBirth"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/editMainActivityName"
+            android:hint="생년월일(8숫자)"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewMale"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="남"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/linearLayoutMain"/>
+    <CheckBox
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@id/linearLayoutMain"/>
+    <TextView
+        android:id="@+id/textViewFemale"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="여"
+        android:layout_marginLeft="100dp"
+        android:layout_below="@id/linearLayoutMain"/>
+    <CheckBox
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/linearLayoutMain"/>
+    <Button
+        android:id="@+id/btnRegister_Login"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/textViewFemale"
+        android:layout_margin="10dp"
+        android:text="등 록"
+        android:layout_alignParentRight="true"
+        android:background="#fd3270"/>
+
+</RelativeLayout>
