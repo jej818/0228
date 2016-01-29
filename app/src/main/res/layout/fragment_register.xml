@@ -18,57 +18,54 @@
             android:background="@drawable/logo"/>
 
         <EditText
-            android:id="@+id/editMainActivityName"
+            android:id="@+id/editRegister_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:hint="이름"
-            android:layout_below="@id/imageLogo"/>
+            android:inputType="textPersonName"
+            android:layout_below="@id/imageLogo" />
 
         <EditText
-            android:id="@+id/editMainActivityBirth"
+            android:id="@+id/editRegister_birth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
+            android:inputType="number"
             android:layout_below="@+id/editMainActivityName"
-            android:hint="생년월일(8숫자)"/>
+            android:hint="생년월일(8숫자)"
+            android:maxLength="8"/>
+
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_below="@id/editRegister_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_Male"
+                android:text="남자 아이"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radio_Female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자 아이" />
+
+        </RadioGroup>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewMale"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:textSize="20dp"
-        android:text="남"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@id/linearLayoutMain"/>
-    <CheckBox
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@id/linearLayoutMain"/>
-    <TextView
-        android:id="@+id/textViewFemale"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:textSize="20dp"
-        android:text="여"
-        android:layout_marginLeft="100dp"
-        android:layout_below="@id/linearLayoutMain"/>
-    <CheckBox
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="1dp"
-        android:layout_below="@id/linearLayoutMain"/>
     <Button
-        android:id="@+id/btnRegister_Login"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/textViewFemale"
-        android:layout_margin="10dp"
-        android:text="등 록"
-        android:layout_alignParentRight="true"
-        android:background="#fd3270"/>
+        android:id="@+id/btnRegister_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 등록하기"
+        android:layout_alignParentBottom="true"/>
+
 
 </RelativeLayout>

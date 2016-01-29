@@ -34,7 +34,7 @@ public class ExpectFragment extends Fragment {
     }
 
     private void makeView(){
-        ((Button)wholeView.findViewById(R.id.btnExpext_calculation)).setOnClickListener(click);
+        ((Button)wholeView.findViewById(R.id.btnExpect_calculation)).setOnClickListener(click);
         ((Button)wholeView.findViewById(R.id.btnExpect_back)).setOnClickListener(click);
         (wholeView.findViewById(R.id.layout_hiddenpage)).setVisibility(View.INVISIBLE);
     }
@@ -42,7 +42,7 @@ public class ExpectFragment extends Fragment {
     View.OnClickListener click = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            if(v.getId() == R.id.btnExpext_calculation)
+            if(v.getId() == R.id.btnExpect_calculation)
                 //calculation button clicked
                 (wholeView.findViewById(R.id.layout_hiddenpage)).setVisibility(View.VISIBLE);
             else if(v.getId() == R.id.btnExpect_back)

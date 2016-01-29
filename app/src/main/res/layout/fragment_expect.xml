@@ -25,7 +25,7 @@
             android:text="아빠키"
             android:textSize="20dp"/>
         <EditText
-            android:id="@+id/editFragmentMainID"
+            android:id="@+id/editEcpect_dad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="아빠의 키를 입력하세요 (단위 cm)"/>
@@ -35,13 +35,13 @@
             android:text="엄마키"
             android:textSize="20dp"/>
         <EditText
-            android:id="@+id/editFragmentMainPW"
+            android:id="@+id/editExpect_mom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="엄마의 키를 입력하세요 (단위 cm)"/>
 
         <Button
-            android:id="@+id/btnExpext_calculation"
+            android:id="@+id/btnExpect_calculation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
