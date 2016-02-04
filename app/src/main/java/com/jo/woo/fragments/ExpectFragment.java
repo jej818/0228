@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jo.woo.Constants;
 import com.jo.woo.MainActivity;
@@ -16,6 +18,13 @@ import com.jo.woo.R;
  */
 public class ExpectFragment extends Fragment {
     private View wholeView = null;
+    private String mGender = null;
+    public ExpectFragment (){}
+    public ExpectFragment (String Gender){
+        this.mGender = Gender;
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
@@ -42,12 +51,26 @@ public class ExpectFragment extends Fragment {
     View.OnClickListener click = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            if(v.getId() == R.id.btnExpect_calculation)
+            if(v.getId() == R.id.btnExpect_calculation) {
+                int dad = Integer.valueOf(((EditText) wholeView.findViewById(R.id.editEcpect_dad)).getText().toString());
+                int mom = Integer.valueOf(((EditText) wholeView.findViewById(R.id.editExpect_mom)).getText().toString());
+                double result;
+
                 //calculation button clicked
                 (wholeView.findViewById(R.id.layout_hiddenpage)).setVisibility(View.VISIBLE);
-            else if(v.getId() == R.id.btnExpect_back)
+                if(mGender.equals("남아")) {
+                    result = (double) (dad + mom + 13)/2;
+                    ((TextView)wholeView.findViewById(R.id.textExpect)).setText(Double.toString(result));
+                }
+                else{
+                    result = (double) (dad + mom - 13)/2;
+                    ((TextView)wholeView.findViewById(R.id.textExpect)).setText(Double.toString(result));
+                }
+            }
+            else if(v.getId() == R.id.btnExpect_back) {
                 //back button clicked
-                ((MainActivity)getActivity()).moveFragment(Constants.GROWTHINFO);
+                ((MainActivity) getActivity()).moveFragment(Constants.GROWTHINFO);
+            }
         }
     };
 }

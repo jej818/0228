@@ -24,6 +24,10 @@ import com.jo.woo.fragments.ValueFragment;
 }*/
 
 public class MainActivity extends FragmentActivity {
+    private String mName = null;
+    private Integer mMonth = null;
+    private String mGender = null;
+
     private FragmentTransaction mFrgTransaction = null;
     private RegisterFragment mRegister = null;
     private MenuFragment mMenu = null;
@@ -55,11 +59,9 @@ public class MainActivity extends FragmentActivity {
     private void makeView()
     {
         mRegister = new RegisterFragment();
-        mMenu = new MenuFragment();
         mMeasure = new MeasureFragment();
         mGrowthinfo = new GrowthinfoFragment();
         mDevelop = new DevelopFragment();
-        mExpect = new ExpectFragment();
         mGraph = new GraphFragment();
         mValue = new ValueFragment();
 
@@ -75,6 +77,8 @@ public class MainActivity extends FragmentActivity {
                 //container��� ������ mainFragment�� ����ž� ��� FrgTransaction���� �˷���
                 break;
             case Constants.MENU:
+                if(mMenu == null)
+                    mMenu = new MenuFragment(mName, mMonth, mGender);
                 mFrgTransaction.replace(R.id.container, mMenu);
                 break;
             case Constants.MEASURE:
@@ -90,6 +94,8 @@ public class MainActivity extends FragmentActivity {
                 mFrgTransaction.replace(R.id.container, mDevelop);
                 break;
             case Constants.EXPECT:
+                if(mExpect == null)
+                    mExpect = new ExpectFragment(mGender);
                 mFrgTransaction.replace(R.id.container, mExpect);
                 break;
             case Constants.GRAPH:
@@ -100,5 +106,19 @@ public class MainActivity extends FragmentActivity {
         mFrgTransaction.commit();
         //commit�� ������ ������ ���Ǽ� ����ڿ��� ��Ÿ���� ��
     }
+
+    public void setName(String Name) { mName = Name; }
+    public void setMonth(Integer Month) { mMonth = Month; }
+    public void setGender(Boolean Gender) {
+        if(Gender)
+            mGender = "남아";
+        else
+            mGender = "여아";
+    }
+
+    public String getName(){ return mName; }
+    public Integer getMonth() { return mMonth; }
+    public String getGender() { return mGender; }
+
 }
 

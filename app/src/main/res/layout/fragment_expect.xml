@@ -27,6 +27,8 @@
         <EditText
             android:id="@+id/editEcpect_dad"
             android:layout_width="match_parent"
+            android:inputType="number"
+            android:singleLine="true"
             android:layout_height="wrap_content"
             android:hint="아빠의 키를 입력하세요 (단위 cm)"/>
         <TextView
@@ -38,6 +40,8 @@
             android:id="@+id/editExpect_mom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:singleLine="true"
             android:hint="엄마의 키를 입력하세요 (단위 cm)"/>
 
         <Button
@@ -69,6 +73,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
+            android:id="@+id/textExpect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="180cm 입니다."

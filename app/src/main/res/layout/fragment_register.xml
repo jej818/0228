@@ -17,29 +17,44 @@
             android:layout_gravity="center"
             android:background="@drawable/logo"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름을 입력하세요"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/editRegister_name" />
+
         <EditText
             android:id="@+id/editRegister_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
             android:hint="이름"
+            android:singleLine="true"
             android:inputType="textPersonName"
             android:layout_below="@id/imageLogo" />
 
-        <EditText
-            android:id="@+id/editRegister_birth"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+        <TextView
+            android:id="@+id/textViewInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생일을 입력하세요"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:inputType="number"
-            android:layout_below="@+id/editMainActivityName"
-            android:hint="생년월일(8숫자)"
-            android:maxLength="8"/>
+            android:layout_below="@+id/editRegister_name" />
 
+        <DatePicker
+            android:id="@+id/datepicker"
+            android:startYear="2000"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:calendarViewShown="false"
+            android:spinnersShown="true"/>
 
         <RadioGroup
             android:id="@+id/radiogroup"
-            android:layout_below="@id/editRegister_birth"
+            android:layout_below="@id/datepicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 

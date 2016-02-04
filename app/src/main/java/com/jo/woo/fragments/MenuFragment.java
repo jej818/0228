@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.jo.woo.Constants;
 import com.jo.woo.MainActivity;
@@ -16,6 +17,15 @@ import com.jo.woo.R;
  */
 public class MenuFragment extends Fragment {
     private View wholeView = null;
+    private String mName = null;
+    private Integer mMonth = null;
+    private String mGender = null;
+    public MenuFragment (){}
+    public MenuFragment (String Name, Integer Month, String Gender){
+        this.mName = Name;
+        this.mMonth = Month;
+        this.mGender = Gender;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
@@ -36,6 +46,7 @@ public class MenuFragment extends Fragment {
     private void makeView(){
         ((Button)wholeView.findViewById(R.id.btnMenu_estimate)).setOnClickListener(click);
         ((Button)wholeView.findViewById(R.id.btnMenu_growthInfo)).setOnClickListener(click);
+        ((TextView)wholeView.findViewById(R.id.textViewInfo)).setText(mName + " ("+ mGender +"/"+mMonth+"개월)");
     }
 
     View.OnClickListener click = new View.OnClickListener(){
