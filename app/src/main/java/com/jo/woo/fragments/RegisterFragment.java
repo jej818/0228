@@ -3,6 +3,7 @@ package com.jo.woo.fragments;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jo.woo.Constants;
@@ -60,6 +62,10 @@ public class RegisterFragment extends Fragment {
         ((RadioButton)wholeView.findViewById(R.id.radio_Male)).setOnCheckedChangeListener(check);
         ((RadioButton)wholeView.findViewById(R.id.radio_Female)).setOnCheckedChangeListener(check);
 
+        //String name = ((MainActivity)getActivity()).getName();
+        //Integer month = ((MainActivity)getActivity()).getMonth();
+        //String gender = ((MainActivity)getActivity()).getGender();
+
         datePicker = (DatePicker)wholeView.findViewById(R.id.datepicker);
 
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
@@ -72,7 +78,6 @@ public class RegisterFragment extends Fragment {
                     }
                 });
     }
-
 
     CheckBox.OnCheckedChangeListener check = new OnCheckedChangeListener() {
         @Override
@@ -105,14 +110,17 @@ public class RegisterFragment extends Fragment {
             if(id == R.id.btnRegister_login){
 
                 result = ((c_year - s_year) * 12) + (c_month-s_month);
-
-                ((MainActivity) getActivity()).setName(((EditText) wholeView.findViewById(R.id.editRegister_name)).getText().toString());
-                ((MainActivity) getActivity()).setMonth((result));
-                ((MainActivity) getActivity()).setGender(gender);
-                if(((EditText) wholeView.findViewById(R.id.editRegister_name)).getText().toString().equals(""))
-                    Toast.makeText(getActivity(), "이름입력해주세요", Toast.LENGTH_LONG).show();
+                String name = ((EditText) wholeView.findViewById(R.id.editRegister_name)).getText().toString();
+                //((MainActivity) getActivity()).setName(name);
+                //((MainActivity) getActivity()).setMonth((result));
+                //((MainActivity) getActivity()).setGender(gender);
+                if(name.equals(""))
+                    Toast.makeText(getActivity(), "이름을 입력해주세요", Toast.LENGTH_LONG).show();
                 else {
-                    ((MainActivity) getActivity()).moveFragment(Constants.MENU);
+                    ((MainActivity) getActivity()).setName(name);
+                    ((MainActivity) getActivity()).setMonth((result));
+                    ((MainActivity) getActivity()).setGender(gender);
+                    ((MainActivity) getActivity()).moveFragment(Constants.MAIN);
                 }
 
             }

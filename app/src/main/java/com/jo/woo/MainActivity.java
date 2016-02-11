@@ -1,5 +1,7 @@
 package com.jo.woo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import com.jo.woo.fragments.DevelopFragment;
 import com.jo.woo.fragments.ExpectFragment;
 import com.jo.woo.fragments.GraphFragment;
 import com.jo.woo.fragments.GrowthinfoFragment;
+import com.jo.woo.fragments.MainFragment;
 import com.jo.woo.fragments.MeasureFragment;
 import com.jo.woo.fragments.MenuFragment;
 import com.jo.woo.fragments.RegisterFragment;
@@ -28,7 +31,11 @@ public class MainActivity extends FragmentActivity {
     private Integer mMonth = null;
     private String mGender = null;
 
+    private SharedPreferences pref = null;
+
     private FragmentTransaction mFrgTransaction = null;
+
+    private MainFragment mMain = null;
     private RegisterFragment mRegister = null;
     private MenuFragment mMenu = null;
     private MeasureFragment mMeasure = null;
@@ -47,13 +54,14 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onResume(){
         super.onResume();
+        loadSharedPreference();
         makeView();
-        moveFragment(Constants.REGISTER);
+        moveFragment(Constants.MAIN);
     }
     @Override
     public void onPause(){
         super.onPause();
-
+        saveSharedPreference();
     }
 
     private void makeView()
@@ -72,6 +80,11 @@ public class MainActivity extends FragmentActivity {
         mFrgTransaction = getSupportFragmentManager().beginTransaction();
         //transaction �����ͼ� mFrgTransaction�� �־���
         switch (type){
+            case Constants.MAIN:
+                if(mMain == null)
+                    mMain = new MainFragment(mName, mMonth, mGender);
+                mFrgTransaction.replace(R.id.container, mMain);
+                break;
             case Constants.REGISTER:
                 mFrgTransaction.replace(R.id.container, mRegister);
                 //container��� ������ mainFragment�� ����ž� ��� FrgTransaction���� �˷���
@@ -119,6 +132,22 @@ public class MainActivity extends FragmentActivity {
     public String getName(){ return mName; }
     public Integer getMonth() { return mMonth; }
     public String getGender() { return mGender; }
+
+    private void saveSharedPreference(){
+        if(pref == null) pref= getSharedPreferences("myapplication", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit= pref.edit();
+        if(mName != null) edit.putString("name", mName);
+        if(mMonth != null) edit.putInt("month", mMonth);
+        if(mGender != null) edit.putString("gender", mGender);
+        edit.commit();
+    }
+    // load data on local
+    private void loadSharedPreference(){
+        pref= getSharedPreferences("myapplication", Context.MODE_PRIVATE);
+        mName= pref.getString("name", null);
+        mMonth = pref.getInt("month", 0);
+        mGender = pref.getString("gender", null);
+    }
 
 }
 
