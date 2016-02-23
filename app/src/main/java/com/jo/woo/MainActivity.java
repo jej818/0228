@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.jo.woo.fragments.DevelopFragment;
@@ -29,6 +28,7 @@ import com.jo.woo.fragments.ValueFragment;
 public class MainActivity extends FragmentActivity {
     private String mName = null;
     private Integer mMonth = null;
+    private String mAge = null;
     private String mGender = null;
 
     private SharedPreferences pref = null;
@@ -68,8 +68,6 @@ public class MainActivity extends FragmentActivity {
     {
         mRegister = new RegisterFragment();
         mMeasure = new MeasureFragment();
-        mGrowthinfo = new GrowthinfoFragment();
-        mDevelop = new DevelopFragment();
         mGraph = new GraphFragment();
         mValue = new ValueFragment();
 
@@ -82,7 +80,7 @@ public class MainActivity extends FragmentActivity {
         switch (type){
             case Constants.MAIN:
                 if(mMain == null)
-                    mMain = new MainFragment(mName, mMonth, mGender);
+                    mMain = new MainFragment(mName, mMonth, mAge, mGender);
                 mFrgTransaction.replace(R.id.container, mMain);
                 break;
             case Constants.REGISTER:
@@ -91,7 +89,7 @@ public class MainActivity extends FragmentActivity {
                 break;
             case Constants.MENU:
                 if(mMenu == null)
-                    mMenu = new MenuFragment(mName, mMonth, mGender);
+                    mMenu = new MenuFragment(mName, mMonth, mAge, mGender);
                 mFrgTransaction.replace(R.id.container, mMenu);
                 break;
             case Constants.MEASURE:
@@ -101,9 +99,13 @@ public class MainActivity extends FragmentActivity {
                 mFrgTransaction.replace(R.id.container, mValue);
                 break;
             case Constants.GROWTHINFO:
+                if(mGrowthinfo == null)
+                    mGrowthinfo = new GrowthinfoFragment(mName, mMonth, mAge, mGender);
                 mFrgTransaction.replace(R.id.container, mGrowthinfo);
                 break;
             case Constants.DEVELOP:
+                if(mDevelop == null)
+                    mDevelop = new DevelopFragment(mName, mMonth, mAge, mGender);
                 mFrgTransaction.replace(R.id.container, mDevelop);
                 break;
             case Constants.EXPECT:
@@ -122,6 +124,15 @@ public class MainActivity extends FragmentActivity {
 
     public void setName(String Name) { mName = Name; }
     public void setMonth(Integer Month) { mMonth = Month; }
+    public void setAge(Integer month) {
+        int age;
+        if(month < 12)
+            mAge = "생후" + month +"개월";
+        else{
+            age = month/12;
+            mAge = "만 " + age + "세";
+        }
+    }
     public void setGender(Boolean Gender) {
         if(Gender)
             mGender = "남아";
@@ -131,6 +142,7 @@ public class MainActivity extends FragmentActivity {
 
     public String getName(){ return mName; }
     public Integer getMonth() { return mMonth; }
+    public String getAge() {return mAge;}
     public String getGender() { return mGender; }
 
     private void saveSharedPreference(){
@@ -138,6 +150,7 @@ public class MainActivity extends FragmentActivity {
         SharedPreferences.Editor edit= pref.edit();
         if(mName != null) edit.putString("name", mName);
         if(mMonth != null) edit.putInt("month", mMonth);
+        if(mAge != null) edit.putString("age", mAge);
         if(mGender != null) edit.putString("gender", mGender);
         edit.commit();
     }
@@ -146,6 +159,7 @@ public class MainActivity extends FragmentActivity {
         pref= getSharedPreferences("myapplication", Context.MODE_PRIVATE);
         mName= pref.getString("name", null);
         mMonth = pref.getInt("month", 0);
+        mAge = pref.getString("age", null);
         mGender = pref.getString("gender", null);
     }
 

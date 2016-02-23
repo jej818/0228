@@ -8,15 +8,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="10dp">
-    <TextView
-        android:id="@+id/textviewMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="우리아이를 부탁해"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/Menu_Logo"
+            android:layout_margin="15dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/logo"/>
 
     <TextView
         android:id="@+id/textViewInfo"
@@ -27,25 +26,23 @@
         android:textSize="18dp"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/textViewMenu"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:id="@+id/btnMenu_estimate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="측정하기"
-        android:layout_marginTop="43dp"
-        android:textSize="20dp"
-        android:layout_below="@+id/textViewInfo"
-        android:layout_centerHorizontal="true" />
+        <Button
+            android:id="@+id/btnMenu_estimate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="측정하기"
+            android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:id="@+id/btnMenu_growthInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="성장정보"
-        android:layout_below="@+id/btnMenu_estimate"
-        android:textSize="20dp" />
+        <Button
+            android:id="@+id/btnMenu_growthInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="성장정보"
+            />
+
 
 </LinearLayout>
 </RelativeLayout>

@@ -3,9 +3,21 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textViewGraphTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="우리아이 성장 기록"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"/>
+
+    <ListView
+        android:id="@+id/listFragmentList"
+        android:layout_below="@+id/textViewGraphTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="growing graph will be placed"/>
+        android:layout_height="match_parent"/>
+
 
     <Button
         android:id="@+id/btnGraph_back"

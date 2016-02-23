@@ -115,12 +115,15 @@ public class RegisterFragment extends Fragment {
                 //((MainActivity) getActivity()).setMonth((result));
                 //((MainActivity) getActivity()).setGender(gender);
                 if(name.equals(""))
-                    Toast.makeText(getActivity(), "이름을 입력해주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "이름을 입력하세요.", Toast.LENGTH_LONG).show();
+                else if(result == 24194 || result <= 0)
+                    Toast.makeText(getActivity(), "생년월일을 정확하게 입력하세요.", Toast.LENGTH_LONG).show();
                 else {
                     ((MainActivity) getActivity()).setName(name);
                     ((MainActivity) getActivity()).setMonth((result));
+                    ((MainActivity) getActivity()).setAge((result));
                     ((MainActivity) getActivity()).setGender(gender);
-                    ((MainActivity) getActivity()).moveFragment(Constants.MAIN);
+                    ((MainActivity) getActivity()).moveFragment(Constants.MENU);
                 }
 
             }

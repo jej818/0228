@@ -22,7 +22,7 @@
         android:id="@+id/btnGrowthinfo_graph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="우리 아이 성장 그래프"
+        android:text="우리 아이 성장 기록"
         android:layout_below="@+id/textViewInfoMenu"/>
 
     <Button

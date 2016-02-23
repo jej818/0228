@@ -17,6 +17,18 @@ import com.jo.woo.R;
 public class DevelopFragment extends Fragment {
     private View wholeView = null;
 
+    private String mName = null;
+    private Integer mMonth = null;
+    private String mAge = null;
+    private String mGender = null;
+    public DevelopFragment(){}
+    public DevelopFragment(String Name, Integer Month, String Age, String Gender){
+        this.mName = Name;
+        this.mMonth = Month;
+        this.mAge = Age;
+        this.mGender = Gender;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
         wholeView = inflater.inflate(R.layout.fragment_develop, null);

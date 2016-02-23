@@ -17,13 +17,16 @@ import com.jo.woo.R;
  */
 public class MenuFragment extends Fragment {
     private View wholeView = null;
+
     private String mName = null;
     private Integer mMonth = null;
+    private String mAge = null;
     private String mGender = null;
     public MenuFragment (){}
-    public MenuFragment (String Name, Integer Month, String Gender){
+    public MenuFragment (String Name, Integer Month, String Age, String Gender){
         this.mName = Name;
         this.mMonth = Month;
+        this.mAge = Age;
         this.mGender = Gender;
     }
 
@@ -43,10 +46,14 @@ public class MenuFragment extends Fragment {
         super.onPause();
     }
 
+    private void Age(int month){
+
+    }
+
     private void makeView(){
         ((Button)wholeView.findViewById(R.id.btnMenu_estimate)).setOnClickListener(click);
         ((Button)wholeView.findViewById(R.id.btnMenu_growthInfo)).setOnClickListener(click);
-        ((TextView)wholeView.findViewById(R.id.textViewInfo)).setText(mName + " ("+ mGender +"/"+mMonth+"개월)");
+        ((TextView)wholeView.findViewById(R.id.textViewInfo)).setText(mName + " ("+ mGender +"/"+ mAge + ")");
     }
 
     View.OnClickListener click = new View.OnClickListener(){
