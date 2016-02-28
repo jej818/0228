@@ -30,6 +30,8 @@ public class MainActivity extends FragmentActivity {
     private Integer mMonth = null;
     private String mAge = null;
     private String mGender = null;
+    private Float mHeight = null;
+    private Float mWeight = null;
 
     private SharedPreferences pref = null;
 
@@ -105,7 +107,7 @@ public class MainActivity extends FragmentActivity {
                 break;
             case Constants.DEVELOP:
                 if(mDevelop == null)
-                    mDevelop = new DevelopFragment(mName, mMonth, mAge, mGender);
+                    mDevelop = new DevelopFragment(mName, mMonth, mAge, mGender,mHeight,mWeight);
                 mFrgTransaction.replace(R.id.container, mDevelop);
                 break;
             case Constants.EXPECT:
@@ -126,8 +128,8 @@ public class MainActivity extends FragmentActivity {
     public void setMonth(Integer Month) { mMonth = Month; }
     public void setAge(Integer month) {
         int age;
-        if(month < 12)
-            mAge = "생후" + month +"개월";
+        if(month < 36)
+            mAge = month +"개월";
         else{
             age = month/12;
             mAge = "만 " + age + "세";
@@ -139,11 +141,15 @@ public class MainActivity extends FragmentActivity {
         else
             mGender = "여아";
     }
+    public void setHeight(Float Height) { mHeight = Height; }
+    public void setWeight(Float Weight) { mWeight = Weight; }
 
-    public String getName(){ return mName; }
+    public String getName() { return mName; }
     public Integer getMonth() { return mMonth; }
-    public String getAge() {return mAge;}
+    public String getAge() { return mAge;}
     public String getGender() { return mGender; }
+    public Float getHeight() { return mHeight; }
+    public Float getWeight() { return mWeight; }
 
     private void saveSharedPreference(){
         if(pref == null) pref= getSharedPreferences("myapplication", Context.MODE_PRIVATE);
@@ -152,6 +158,9 @@ public class MainActivity extends FragmentActivity {
         if(mMonth != null) edit.putInt("month", mMonth);
         if(mAge != null) edit.putString("age", mAge);
         if(mGender != null) edit.putString("gender", mGender);
+        if(mHeight != null) edit.putFloat("height", mHeight);
+        if(mWeight != null) edit.putFloat("weight", mWeight);
+
         edit.commit();
     }
     // load data on local
@@ -161,6 +170,8 @@ public class MainActivity extends FragmentActivity {
         mMonth = pref.getInt("month", 0);
         mAge = pref.getString("age", null);
         mGender = pref.getString("gender", null);
+        mHeight = pref.getFloat("height", 0);
+        mWeight = pref.getFloat("weight", 0);
     }
 
 }
