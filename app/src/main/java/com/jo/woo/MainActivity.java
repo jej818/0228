@@ -71,8 +71,6 @@ public class MainActivity extends FragmentActivity {
         mRegister = new RegisterFragment();
         mMeasure = new MeasureFragment();
         mGraph = new GraphFragment();
-        mValue = new ValueFragment();
-
     }
 
     public void moveFragment(int type){
@@ -98,6 +96,8 @@ public class MainActivity extends FragmentActivity {
                 mFrgTransaction.replace(R.id.container, mMeasure);
                 break;
             case Constants.VALUE:
+                if(mValue == null)
+                    mValue = new ValueFragment(mMonth, mGender, mHeight, mWeight);
                 mFrgTransaction.replace(R.id.container, mValue);
                 break;
             case Constants.GROWTHINFO:

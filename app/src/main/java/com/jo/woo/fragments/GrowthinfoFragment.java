@@ -62,12 +62,12 @@ public class GrowthinfoFragment extends Fragment {
                 //graph button clicked
                 ((MainActivity)getActivity()).moveFragment(Constants.GRAPH);
             else if(v.getId() == R.id.btnGrowthinfo_develop) {
-                if(mMonth <= 72)
+                if(mMonth <= 120)
                     ((MainActivity) getActivity()).moveFragment(Constants.DEVELOP);
                 else
                 {
                     new AlertDialog.Builder(getActivity())
-                            .setMessage("만 6세 이하의 아이 정보만 제공합니다.")
+                            .setMessage("만 10세 이하의 아이 정보만 제공합니다.")
                             .setNegativeButton("확인",new DialogInterface.OnClickListener(){
                                 public void onClick(DialogInterface dlg, int sumthin){ }
                             })
